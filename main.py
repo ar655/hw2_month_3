@@ -4,10 +4,10 @@ from config import dp
 
 import logging
 
-from handlers import  callback ,client , game,admin,fsmAdminMenu
+from handlers import  callback ,client , game,admin
 
 
-fsmAdminMenu.register_handlers_fsmAdminmenu(dp)
+
 client.register_handler_q(dp)
 callback.register_handlers_query(dp)
 admin.register_handlers_extra(dp)
