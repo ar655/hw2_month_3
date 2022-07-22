@@ -3,20 +3,16 @@ from aiogram import types,Dispatcher
 
 from config import  bot ,ADMIN
 
+import random 
 
-
-async  def pin(message:types.Message):
-    if message.from_user.id not in ADMIN:
-        await message.answer('eerror')
-    elif message.text.startswith('game'):
-        await bot.send_dice(message.chat.id, emoji='🏀')
-    elif not message.reply_to_message:
-        await message.answer('command must be reply')
-    elif message.text.startswith('!pin'):
-        await bot.pin_chat_message(message.chat.id, message.message_id)
-
+async  def game(message:types.Message):
+    if message.from_user.id  in ADMIN and  message.text.startswith('game') :
+        emojis = ['🎯', '🎳', '🎰', '🎲', '⚽️', '️🏀']
+        rand_mm  = random.choice(emojis)
+        await bot.send_dice(message.chat.id , emoji=rand_mm)
+    
 
 
 
 def register_handlers_extra(dp:Dispatcher):
-    dp.register_message_handler(pin)
+    dp.register_message_handler(game)
