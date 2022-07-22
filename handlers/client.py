@@ -24,6 +24,11 @@ async def question_handler(message:types.Message):
 
     )
 
+ async def pin(message:types.Message):
+    if message.reply_to_message:
+        await bot.pin_chat_message(message.chat.id,message.reply_message.message_id)
+    else:
+        await.message.reply('command must reply')
 
 
 
@@ -41,3 +46,4 @@ def register_handler_q(dp:Dispatcher):
     dp.register_message_handler(question_handler,commands=['questions1'])
     dp.register_message_handler(meme_handler,commands=['meme'])
     dp.register_message_handler(q_handler,commands=['questions'])
+     dp.register_message_handler(pin,commands=['!pin'])
