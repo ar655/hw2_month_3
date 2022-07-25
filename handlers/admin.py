@@ -10,6 +10,8 @@ async  def game(message:types.Message):
         emojis = ['🎯', '🎳', '🎰', '🎲', '⚽️', '️🏀']
         rand_mm  = random.choice(emojis)
         await bot.send_dice(message.chat.id , emoji=rand_mm)
+    else:
+        await message.answer('not admin')
     
 
 
