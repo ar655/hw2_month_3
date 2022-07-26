@@ -3,7 +3,7 @@ from aiogram.types import  InlineKeyboardMarkup,InlineKeyboardButton,ParseMode
 
 from config import  bot,dp
 from  keyboards import  client_kb
-
+from database.bot_db import sql_random
 
 # @dp.message_handler(commands=['questions'])
 async def question_handler(message:types.Message):
@@ -30,7 +30,13 @@ async def question_handler(message:types.Message):
     else:
         await.message.reply('command must reply')
 
-
+        
+        
+        
+async  def show_random_user(message:types.Message):
+    await sql_random(message)
+    
+        
 
 async  def q_handler(message:types.Message):
     await  bot.send_message(message.from_user.id,f'text',reply_markup=client_kb.start_markup,)
@@ -46,4 +52,6 @@ def register_handler_q(dp:Dispatcher):
     dp.register_message_handler(question_handler,commands=['questions1'])
     dp.register_message_handler(meme_handler,commands=['meme'])
     dp.register_message_handler(q_handler,commands=['questions'])
-     dp.register_message_handler(pin,commands=['!pin'])
+    dp.register_message_handler(pin,commands=['!pin'])
+    dp.register_message_handler(show_random_user,commands=['random'])
+        
