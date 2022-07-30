@@ -26,9 +26,9 @@ async def question_handler(message:types.Message):
 
  async def pin(message:types.Message):
     if message.reply_to_message:
-        await bot.pin_chat_message(message.chat.id,message.reply_message.message_id)
+        await bot.pin_chat_message(message.chat.id,message.reply_to_message.message_id)
     else:
-        await.message.reply('command must reply')
+        await message.reply('command must reply')
 
         
         
