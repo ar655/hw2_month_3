@@ -7,13 +7,18 @@ import  asyncio
 from handlers import  callback ,client , message,admin,fsmAdminMenu,notification
 from database.bot_db import sql_create
 
-fsmAdminMenu.register_handlers_fsmAdminmenu(dp)
-notification.register_func(dp)
 client.register_handler_q(dp)
+fsmAdminMenu.register_handlers_fsmAdminmenu(dp)
+
+
+
+notification.register_func(dp)
 callback.register_handlers_query(dp)
-admin.register_handlers_extra(dp)
+
 
 message.register_handler_some(dp)
+
+admin.register_handlers_extra(dp)
 
 
 
